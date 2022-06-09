@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body class="bg-body">
+    <div
+      class="container vh-100 d-flex justify-content-center align-items-center"
+    >
+      <div class="row d-flex align-items-center">
+        <div class="col-sm-12 d-none col-md-6 col-lg-5 d-md-block">
+          <img src="https://picsum.photos/800" alt="" class="img-fluid" />
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-5 offset-lg-1">
+          <form
+            id="formLogin"
+            class="form d-flex flex-column align-items-center justify-content-center"
+          >
+            <h1 class="mb-4">Hello World!</h1>
+            <div
+              id="alertLogin"
+              class="alert alert-warning d-none"
+              role="alert"
+            >
+              Login or password invalid
+            </div>
+
+            <!-- Input Username -->
+            <div class="form-floating w-100">
+              <input
+                type="text"
+                class="form-control"
+                id="userInputUsername"
+                placeholder="username"
+                onchange="validateUsername()"
+              />
+              <label for="userInputUsername">Username</label>
+            </div>
+            <div class="row w-100" tabindex="-1">
+              <span class="text-danger d-none" id="errorUsername">
+                Please provide a valid city.
+              </span>
+            </div>
+
+            <!-- Input Password -->
+            <div class="form-floating d-flex mt-3 w-100" id="wrapperInputUser">
+              <input
+                type="password"
+                class="form-control"
+                id="userInputPassword"
+                placeholder="password"
+                onchange="validatePassword()"
+              />
+              <label for="userInputPassword">Password</label>
+
+              <button
+                type="button"
+                id="btnTogglePassword"
+                class="btn btn-toggle-password"
+                onclick="togglePassword()"
+              >
+                <i id="iconEye" class="bi bi-eye-fill"></i>
+              </button>
+            </div>
+            <div class="row w-100" tabindex="-1">
+              <span class="text-danger d-none" id="errorPassword">
+                Please provide a valid city.
+              </span>
+            </div>
+
+            <!-- Remember -->
+            <div class="form-check w-100 mt-2 check-remember">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="userInputRemember"
+              />
+              <label class="form-check-label" for="userInputRemember">
+                Remember me
+              </label>
+            </div>
+
+            <!-- Button Submit -->
+            <button
+              type="button"
+              class="btn btn-primary rounded-pill w-100 mt-3"
+              id="btnSubmit"
+              onclick="submitForm()"
+            >
+              Login
+            </button>
+
+            <!--  -->
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <!-- My script -->
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

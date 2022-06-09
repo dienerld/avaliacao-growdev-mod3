@@ -1,0 +1,24 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bg-body {
+  background-color: rgb(77, 77, 77) !important;
+}
+
+.btn-toggle-password {
+  margin-left: -40px;
+  outline: none;
+  border: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
