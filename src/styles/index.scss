@@ -1,12 +1,43 @@
+:root {
+  --primary-color: #a9b6c3;
+  --secondary-color: #74839b;
+  --tertiary-color: #7a8ea1;
+
+  --bg-primary: #112731;
+  --bg-secondary: #06334b;
+  --bg-tertiary: #224756;
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
   border: 0;
+  color: var(--primary-color) !important;
 }
 
-.bg-body {
-  background-color: rgb(77, 77, 77) !important;
+.bg-primary {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary) !important;
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.color-primary {
+  color: var(--primary-color) !important;
+}
+
+.color-secondary {
+  color: var(--secondary-color) !important;
+}
+
+.color-tertiary {
+  color: var(--tertiary-color) !important;
 }
 
 .btn-toggle-password {
@@ -21,4 +52,33 @@ html {
   &:focus {
     outline: none;
   }
+}
+
+.input-form {
+  background-color: var(--bg-secondary);
+  border: 0;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    border: 0;
+    background: var(--bg-tertiary);
+  }
+}
+
+.btn-primary {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--tertiary-color) !important;
+}
+
+.span-invalid {
+  margin-left: inherit;
+}
+
+.btn {
+  border: 0;
+}
+
+.trigger-modal {
+  cursor: pointer;
 }

@@ -18,20 +18,22 @@
 
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
-  <body class="bg-body">
+  <body class="bg-primary">
     <div
       class="container vh-100 d-flex justify-content-center align-items-center"
     >
       <div class="row d-flex align-items-center">
         <div class="col-sm-12 d-none col-md-6 col-lg-5 d-md-block">
-          <img src="https://picsum.photos/800" alt="" class="img-fluid" />
+          <img src="./assets/wallpaper.jpeg" alt="" class="img-fluid" />
         </div>
         <div class="col-sm-12 col-md-6 col-lg-5 offset-lg-1">
           <form
             id="formLogin"
             class="form d-flex flex-column align-items-center justify-content-center"
           >
-            <h1 class="mb-4">Hello World!</h1>
+            <h1 class="h1 mb-4 text-uppercase text-center">
+              Bem Vindo ao Sistema de Recados!
+            </h1>
             <div
               id="alertLogin"
               class="alert alert-warning d-none"
@@ -44,16 +46,19 @@
             <div class="form-floating w-100">
               <input
                 type="text"
-                class="form-control"
+                class="form-control input-form color-primary"
                 id="userInputUsername"
                 placeholder="username"
-                onchange="validateUsername()"
+                onchange="validateInput('userInputUsername')"
               />
               <label for="userInputUsername">Username</label>
             </div>
             <div class="row w-100" tabindex="-1">
-              <span class="text-danger d-none" id="errorUsername">
-                Please provide a valid city.
+              <span
+                class="text-danger span-invalid fs-6 d-none"
+                id="errorUsername"
+              >
+                Usuário deve ter no mínimo 3 caracteres.
               </span>
             </div>
 
@@ -61,25 +66,29 @@
             <div class="form-floating d-flex mt-3 w-100" id="wrapperInputUser">
               <input
                 type="password"
-                class="form-control"
+                class="form-control input-form color-primary"
                 id="userInputPassword"
                 placeholder="password"
-                onchange="validatePassword()"
+                onchange="validateInput('userInputPassword')"
               />
-              <label for="userInputPassword">Password</label>
 
+              <label for="userInputPassword">Senha</label>
               <button
                 type="button"
                 id="btnTogglePassword"
-                class="btn btn-toggle-password"
+                class="btn btn-toggle-password color-tertiary"
                 onclick="togglePassword()"
               >
                 <i id="iconEye" class="bi bi-eye-fill"></i>
               </button>
             </div>
+
             <div class="row w-100" tabindex="-1">
-              <span class="text-danger d-none" id="errorPassword">
-                Please provide a valid city.
+              <span
+                class="text-danger span-invalid fs-6 d-none"
+                id="errorPassword"
+              >
+                Senha deve ter no mínimo 3 caracteres.
               </span>
             </div>
 
@@ -91,23 +100,128 @@
                 value=""
                 id="userInputRemember"
               />
-              <label class="form-check-label" for="userInputRemember">
-                Remember me
+              <label
+                class="form-check-label color-tertiary"
+                for="userInputRemember"
+              >
+                Lembrar de mim
               </label>
             </div>
 
             <!-- Button Submit -->
             <button
               type="button"
-              class="btn btn-primary rounded-pill w-100 mt-3"
+              class="btn btn-primary rounded-pill w-100 mt-3 color-primary"
               id="btnSubmit"
-              onclick="submitForm()"
+              onclick="submitFormLogin()"
             >
               Login
             </button>
 
-            <!--  -->
+            <!-- trigger modal -->
+            <span
+              class="trigger-modal color-secondary mt-2"
+              data-bs-toggle="modal"
+              data-bs-target="#register-modal"
+              >Criar uma conta</span
+            >
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="register-modal"
+      tabindex="-1"
+      aria-labelledby="register-modal-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <!-- Modal Header -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="register-modal-label">Criar Conta</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- End Modal Header -->
+          <!-- Form / Modal Form -->
+          <form id="form-register-user">
+            <div
+              id="alertRegister"
+              class="alert alert-warning text-center d-none"
+              role="alert"
+            >
+              Login or password invalid
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="username-register-input" class="form-label"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username-register-input"
+                  aria-describedby="textHelp"
+                  onchange="validateCreateUsername()"
+                />
+                <!-- TODO: criar função  -->
+                <div id="textHelp" class="form-text">
+                  Utilize username para criar conta.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password-register-input" class="form-label"
+                  >Senha</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password-register-input"
+                  onchange="validateCreatePassword()"
+                />
+                <!-- TODO: criar função  -->
+                <div id="passwordHelp" class="form-text">
+                  Anote sua senha para não esquecer.
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <label for="password-repeat-register-input" class="form-label"
+                  >Repetir Senha</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password-repeat-register-input"
+                  onchange="validateMatchPassword()"
+                />
+              </div>
+            </div>
+            <!-- End Modal Form -->
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary btn-danger"
+                data-bs-dismiss="modal"
+                id="modal-close"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Criar conta</button>
+            </div>
+            <!-- End Modal Footer -->
+          </form>
+          <!-- End Form  -->
         </div>
       </div>
     </div>
