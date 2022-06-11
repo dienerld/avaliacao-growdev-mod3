@@ -1,43 +1,8 @@
-:root {
-  --primary-color: #a9b6c3;
-  --secondary-color: #74839b;
-  --tertiary-color: #7a8ea1;
-
-  --bg-primary: #112731;
-  --bg-secondary: #06334b;
-  --bg-tertiary: #224756;
+.trigger-modal {
+  cursor: pointer;
 }
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  color: var(--primary-color) !important;
-}
-
-.bg-primary {
-  background-color: var(--bg-primary) !important;
-}
-
-.bg-secondary {
-  background-color: var(--bg-secondary) !important;
-}
-
-.bg-tertiary {
-  background-color: var(--bg-tertiary) !important;
-}
-
-.color-primary {
-  color: var(--primary-color) !important;
-}
-
-.color-secondary {
-  color: var(--secondary-color) !important;
-}
-
-.color-tertiary {
-  color: var(--tertiary-color) !important;
+.span-invalid {
+  margin-left: inherit;
 }
 
 .btn-toggle-password {
@@ -63,22 +28,14 @@ html {
     outline: none;
     border: 0;
     background: var(--bg-tertiary);
+    box-shadow: 0 0 0 0.15rem var(--tertiary-color) !important;
   }
 }
 
-.btn-primary {
-  background-color: var(--bg-secondary) !important;
-  border-color: var(--tertiary-color) !important;
+#alertLogin {
+  --bs-alert-padding-y: 0.5rem !important;
 }
 
-.span-invalid {
-  margin-left: inherit;
-}
-
-.btn {
-  border: 0;
-}
-
-.trigger-modal {
-  cursor: pointer;
+#alertRegister {
+  --bs-alert-margin-bottom: 0 !important;
 }
