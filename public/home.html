@@ -20,53 +20,173 @@
   </head>
   <body class="bg-primary">
     <div class="container">
-      <header class="d-flex">
-        <h1>Meus Recados</h1>
+      <header class="pt-4 d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="text-center">Meus Recados</h1>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" id="logout" onclick="logout()">
+            <!-- <i class="bi bi-arrow-counterclockwise"></i> -->
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
       </header>
-      <main>
+      <main class="mt-5">
         <div class="table-responsive">
-          <table class="table color-primary bg-secondary">
+          <table class="table color-primary">
             <thead>
-              <tr>
-                <th class="col-2 col-md-1" scope="col">#</th>
-                <th class="col-10 col-md-4 col-lg-3" scope="col">First</th>
+              <tr class="bg-secondary">
+                <th class="col-2 col-md-1 text-center" scope="col">#</th>
+                <th class="col-10 col-md-4 col-lg-4" scope="col">Título</th>
                 <th
-                  class="col-md-7 col-lg-6 d-none d-md-table-cell"
+                  class="col-md-7 col-lg-7 d-none d-md-table-cell"
                   scope="col"
                 >
-                  Last
-                </th>
-                <th scope="col" class="d-none d-lg-table-cell btn-collumn">
-                  Handle
+                  Descrição
                 </th>
               </tr>
             </thead>
-            <tbody class="table-group-divider">
-              <tr>
-                <th class="col-2 col-md-1" scope="row">1</th>
-                <td>Mark</td>
-                <td class="d-none d-md-table-cell">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Quibusdam totam iusto reiciendis doloremque fuga distinctio
-                  repudiandae placeat consequuntur officia voluptate.
-                </td>
-                <td class="col col-lg-5 d-none d-lg-table-cell">
-                  <div class="btn-wrapper">
-                    <button class="btn bg-danger">Apagar</button>
-                    <button class="btn bg-light">Editar</button>
-                  </div>
-                </td>
-              </tr>
+            <tbody class="table-group-divider" id="table-body-messages">
+              <!-- Content JS -->
             </tbody>
           </table>
         </div>
+
+        <!-- Button Float for modal -->
+        <button
+          class="btn btn-float"
+          data-bs-target="#modal-store-message"
+          data-bs-toggle="modal"
+          onclick="resetForm()"
+        >
+          <i class="bi bi-plus"></i>
+        </button>
       </main>
+
+      <!-- Modal Details -->
+      <div
+        class="modal fade text-dark"
+        id="modal-details"
+        aria-hidden="true"
+        aria-labelledby="modal-details-title"
+      >
+        tabindex="-1" >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-details-title">
+                <!-- Content JS -->
+              </h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="modal-details-description">
+              <!-- Content JS -->
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" id="btn-delete">Excluir</button>
+              <button class="btn btn-warning" id="btn-edit">Editar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Edit -->
+      <div
+        class="modal fade text-dark"
+        id="modal-store-message"
+        aria-hidden="true"
+        aria-labelledby="modal-store-message-label"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-store-message-label">
+                Nova Mensagem
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                id="btn-close-modal-store-message"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onclick="resetForm()"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Alert -->
+              <div
+                class="w-100 alert alert-warning d-flex align-items-center justify-content-center d-none"
+                id="alertEdit"
+                role="alert"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+                  viewBox="0 0 16 16"
+                  role="img"
+                  aria-label="Warning:"
+                >
+                  <path
+                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                  />
+                </svg>
+                <div id="textAlert">
+                  <!-- Content JS -->
+                </div>
+              </div>
+              <!-- End Alert -->
+              <form id="storeForm">
+                <div class="form-group">
+                  <label for="input-store-message-title">Título</label>
+                  <input
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    id="input-store-message-title"
+                    placeholder="Título"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <label for="input-store-message-description">Descrição</label>
+                  <textarea
+                    name="description"
+                    class="form-control"
+                    id="input-store-message-description"
+                    rows="5"
+                    placeholder="Descrição"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" onclick="storeMessage()">
+                Salvar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Script Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Script Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/de76374ceb.js"
       crossorigin="anonymous"
     ></script>
     <script src="./scripts/home.js"></script>

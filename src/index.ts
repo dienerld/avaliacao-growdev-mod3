@@ -4,13 +4,16 @@ const formRegister = document.querySelector('#form-register-user')!;
 // TODO: Fazer Validação de campos
 
 const session = localStorage.getItem('session');
+//@ts-ignore
 let logged = sessionStorage.getItem('logged');
+//@ts-ignore
 type TMessage = {
   description: string,
   details: string,
 }
 
 
+//@ts-ignore
 type TUser = {
   username: string,
   password: string,
@@ -24,7 +27,7 @@ function saveSession(username: string, stayConnected: boolean = false) {
   }
   sessionStorage.setItem('logged', username);
 }
-
+//@ts-ignore
 function checkLogged() {
   if (session) {
     sessionStorage.setItem('logged', session);
@@ -169,6 +172,3 @@ function submitFormRegister(e: Event) {
 // Start
 formRegister.addEventListener('submit', submitFormRegister);
 checkLogged();
-
-// Only remove erros tsc
-export { }

@@ -1,3 +1,13 @@
+body {
+  background: url(../assets/1.jpg) no-repeat;
+  background-size: cover;
+}
+
+.card {
+  max-width: 500px;
+  box-shadow: 8px 8px 15px 0 #000;
+}
+
 .trigger-modal {
   cursor: pointer;
 }
