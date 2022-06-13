@@ -72,6 +72,7 @@ function editMessage(idMessage: number) {
   indexEdit = idMessage;
   const form = document.querySelector<HTMLFormElement>("#storeForm")!;
   modalStoreMessage.show();
+  //@ts-ignore
   form.title.value = user.messages[idMessage].title;
   form.description.value = user.messages[idMessage].description;
 
@@ -80,6 +81,8 @@ function editMessage(idMessage: number) {
 
 function storeMessage() {
   const form = document.querySelector<HTMLFormElement>("#storeForm")!;
+
+  //@ts-ignore
   const title = form.title.value;
   const description = form.description.value;
 
