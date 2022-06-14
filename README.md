@@ -4,6 +4,13 @@
 
 Refatorar o código do projeto [**Projeto Anterior**](https://github.com/dienerld/avaliacao-growdev-mod2) usando **Typescript** e **Bootstrap** e aplicar conceitos aprendidos em aula.
 
+## Executar o projeto
+
+```bash
+npm install
+npm run build
+```
+
 ## Imagens do projeto
 
 ### Telas de login e cadastro
