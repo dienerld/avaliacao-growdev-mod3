@@ -4,23 +4,10 @@ const modalDetails = new bootstrap.Modal(document.querySelector('#modal-details'
 const modalStoreMessage = new bootstrap.Modal(document.querySelector('#modal-store-message'))!;
 
 //@ts-ignore
-let logged = sessionStorage.getItem('logged');
 let isEdit = false;
 let indexEdit = -1;
-let user: TUser;
 
-//@ts-ignore
-type TMessage = {
-  title: string,
-  description: string,
-}
 
-//@ts-ignore
-type TUser = {
-  username: string,
-  password: string,
-  messages: TMessage[]
-}
 
 function resetForm() {
   document.querySelector<HTMLElement>('#modal-store-message-label')!.innerHTML = 'Nova Mensagem';

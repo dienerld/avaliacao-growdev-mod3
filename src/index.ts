@@ -1,24 +1,10 @@
 const formRegister = document.querySelector('#form-register-user')!;
 
 
-// TODO: Fazer Validação de campos
 
 const session = localStorage.getItem('session');
 //@ts-ignore
-let logged = sessionStorage.getItem('logged');
-//@ts-ignore
-type TMessage = {
-  description: string,
-  details: string,
-}
 
-
-//@ts-ignore
-type TUser = {
-  username: string,
-  password: string,
-  messages: TMessage[]
-}
 
 // Utils
 function saveSession(username: string, stayConnected: boolean = false) {
@@ -119,14 +105,14 @@ function submitFormLogin() {
 
 
   if (!username || !password) {
-    alert("alertLogin")
+    alert("alert-login")
 
     return;
   }
 
   const user = JSON.parse(localStorage.getItem(username) || '{}');
   if (!(password === user.password) || !user) {
-    alert('alertLogin');
+    alert('alert-login');
     return;
   }
 
@@ -145,18 +131,19 @@ function submitFormRegister(e: Event) {
   const passwordRepeat = form["password-repeat"].value;
 
   if (!username || !password || !passwordRepeat) {
-    alert('alertRegister');
+    alert('alert-register');
     return;
   }
 
   if (password !== passwordRepeat) return;
 
   if (window.localStorage.getItem(username)) {
-    alert('alertRegister');
+    alert('alert-register');
     return;
   }
 
-  const user: TUser = {
+  //@ts-ignore
+  user: TUser = {
     username,
     password,
     messages: []
